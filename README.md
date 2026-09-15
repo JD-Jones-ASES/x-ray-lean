@@ -26,11 +26,6 @@ and induction. They do not rely on a finite census or solver output. The minimum
 edge in the lower one-sided family is retained by the formal construction.
 The extension allows repeated source labels and requires no prescribed boundary cells.
 
-This is a private development prepared for JD Jones to release and submit.
-No source-author endorsement or independent human review is claimed. The detailed
-comparison with Brualdi–Fritscher's 2014 construction section remains outstanding;
-this repository does not claim worldwide priority.
-
 Run locally with the pinned Lean and Mathlib versions:
 
 ```sh
