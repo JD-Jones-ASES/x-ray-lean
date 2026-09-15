@@ -109,11 +109,6 @@ provenance and novelty, not whether these Lean statements were checked.
 
 ## Provenance and exposition
 
-The mathematical source is Analytic-Lab commit
-`391d59f60d405155b145c69c3a4639797e4c28fd`. The authorized rk-lean repository
-was inspected for packaging and documentation conventions; its mathematical
-proof code was not imported. The proof modules here were written for this note.
-
 The formal promotion inverse records the orientation bit by transposing the
 whole output, and undoes that transposition before recovering the source.
 The exposition may instead keep unrelated cycles fixed and reverse only the
