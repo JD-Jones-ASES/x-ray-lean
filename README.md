@@ -4,7 +4,7 @@ This repository proves three constructive results in Lean:
 
 - Every admissible binary profile with rank deviations in `[-2, 2]` has a permutation realization, at every order.
 - The one-sided families `dᵢ ≥ -1` and `dᵢ ≤ 1` are realizable, with at least `2ᵘ` realizations, where `u` counts positive and negative deviations respectively.
-- Every supplied permutation with label multiset `L` extends to one with labels `{3, 2n + 1} ∪ (L + 2)`. For interior source labels this gives an injection between fibers.
+- For `n ≥ 1`, realizability of a label multiset `L` implies realizability of `Q(L) = {3, 2n + 1} multiset-union (L + 2)` at order `n + 2`. If every source label lies in `[2, 2n − 2]`, then `h(L) ≤ h(Q(L))`, where `h` counts permutation realizations.
 
 The proofs also restrict the endpoint deviations of a least-order counterexample.
 The unrestricted binary X-ray conjecture remains open.
@@ -24,7 +24,9 @@ The interval theorem bounds these deviations, with no bound on order or density 
 The proofs use integer cells, paths of partial permutations, cycle orientation,
 and induction. They do not rely on a finite census or solver output. The minimum
 edge in the lower one-sided family is retained by the formal construction.
-The extension allows repeated source labels and requires no prescribed boundary cells.
+The extension statements allow repeated source labels. The selected declarations
+assert existence and a conditional cardinality inequality; they do not specify
+a pointwise extension of a prescribed source permutation.
 
 Run locally with the pinned Lean and Mathlib versions:
 

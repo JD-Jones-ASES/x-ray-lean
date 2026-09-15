@@ -16,9 +16,14 @@ those examples nor the earlier Python census is a premise of a Lean proof.
 | Lower and upper one-sided families are realizable | XRay/OneSided.lean |
 | At least 2^u realizations in the lower family | XRay/OneSidedCount.lean |
 | Reflected counting bound for the upper family | XRay/ReflectionCount.lean |
-| Ordinary Q extension, including repeated labels | XRay/Extension.lean |
-| Injection from an interior fiber to its Q extension | XRay/ExtensionCount.lean |
+| For n >= 1, realizable L implies realizable Q(L), allowing repeated labels | XRay/Extension.lean |
+| For n >= 1, h(L) <= h(Q(L)) when every source label lies in [2, 2n-2] | XRay/ExtensionCount.lean |
 | Endpoint restriction on a least-order counterexample | XRay/TwoSided.lean |
+
+Here h counts permutation realizations. The two selected extension statements
+assert existence and a conditional cardinality inequality, without specifying
+a pointwise extension of a prescribed permutation. The injective constructions
+below are supporting proof mechanisms.
 
 The lower one-sided induction retains the minimum undirected edge.
 `XRay.realizable_iff_matrix` establishes equivalence between ranked-cell
@@ -33,6 +38,15 @@ Challenge intentionally contains eight proof placeholders. Solution and its
 imports contain none, and Solution does not import Challenge.
 
 ## Local checks
+
+After correcting the extension narrative and theorem docstrings, the full build,
+axiom audit, source guard, release checks, Comparator and both kernel replays
+were rerun successfully. Metadata and local documentation links also pass.
+Definitions, theorem types, proof terms and Comparator selection are unchanged
+from commit `b8b0b87997f5dc53db961ecd33006fe324550c58`. The negative controls
+below retain their earlier successful results and were not rerun for this
+documentation-only correction. File hashes and check scope are recorded in
+[verification/local-checks.json](verification/local-checks.json).
 
 ```sh
 lake exe cache get
@@ -97,9 +111,9 @@ Your solution is okay!
 This desktop is macOS. The local run uses Comparator's documented
 `scripts/fake-landrun.sh` development wrapper because Landrun is a Linux
 sandbox. The wrapper provides no process isolation. The comparison and two
-kernel checks pass, but this is not a claim that Palomar's protected Linux
-pipeline has run. That pipeline, public repository validation, rendering and
-registry review belong to JD Jones's later submission.
+kernel checks pass; the local run does not reproduce Palomar's protected Linux
+sandbox. Palomar separately checks the submitted commit in its verification
+and review pipeline.
 
 The metadata passes PalomarSubmission's `load_formalization_metadata` contract.
 The repository contains the substantive proof, an MIT license, its full dependency

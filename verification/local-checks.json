@@ -30,7 +30,7 @@
   "process_isolation": "No Linux Landrun sandbox; documented Comparator development wrapper on macOS",
   "github_actions_runs": 0,
   "sha256": {
-    "Challenge.lean": "0da9f69f65382aff45022ccb00d04fe70934ef485f38d42cdf77e862fa0cfc0a",
+    "Challenge.lean": "e9542447eb1ebe8faa206521a1805abd0b3495897551e29472103fd292533b34",
     "Solution.lean": "2a0f88507e98220463a40722b64ec236e2dc8a36c850c69ae9f74e4eea6bd529",
     "Test/Axioms.lean": "80f21f139323702ba1ec264bcc4b5fd704417403bb3e9fb6bb2f0b5ca4a64acd",
     "Test/Controls.lean": "037be744f6fa79abee14afe89a863173f564140188ace94b048f54887dcc79a7",
@@ -47,7 +47,7 @@
     "XRay/Defs.lean": "30bd9cc5964bc7cd45b2afc85e050cbb7f45dda7cf48e884792878b28fd6730e",
     "XRay/EndpointReduction.lean": "248d843be7cc566fc1611e68b8528180d9ef88599da921d572a69f7e264880ca",
     "XRay/Expanded.lean": "6996f70490aa499ac11207c0189093a25de05084db910a16a381df7761bd336d",
-    "XRay/Extension.lean": "cab1c4afd245213bf602b9d3b1d53e4b27d14866e18224f03312eb63992742de",
+    "XRay/Extension.lean": "6ee7bca77227131d49bc6a71ad4de494fb0fa8e39557c7c6b935ad387b4a5c9d",
     "XRay/ExtensionCount.lean": "ba9d2646e3c800f2076458d3e7a3933668b0689f9f899e516eb4a11c69021542",
     "XRay/IntegerCells.lean": "2afc1af941e0efda59fa25adbf1fc5f0b760ec7742bf9b5fca6b965698587f9b",
     "XRay/Marked.lean": "bbc46b7b1de39ee037709dbf31dd9d831b3615785efa79c1ccd11de952b52a86",
@@ -77,5 +77,21 @@
     "lake-manifest.json": "4f1412543fcbbb614310fc47709e7876eec4a2d611ec24023292f52d593512f5",
     "lakefile.toml": "679180a64bd5d6b028c208078a52fa3013512c22d9d2faf16858382864368825",
     "lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b"
+  },
+  "editorial_revision": {
+    "base_commit": "b8b0b87997f5dc53db961ecd33006fe324550c58",
+    "scope": "Narrative and theorem docstrings only; all Lean code outside those docstrings, Comparator configuration and dependency pins unchanged.",
+    "rerun": [
+      "full build and 724-declaration axiom audit",
+      "source guard",
+      "eight release declarations",
+      "Comparator",
+      "Lean kernel replay",
+      "NanoDa replay",
+      "Palomar metadata contract",
+      "root Markdown local links",
+      "git diff --check"
+    ],
+    "negative_controls": "Historical successful controls retained above; not rerun for this documentation-only correction."
   }
 }

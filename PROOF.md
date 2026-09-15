@@ -11,9 +11,11 @@ The binary permutation X-ray conjecture asks whether the usual density
 inequalities suffice to realize a prescribed set of distinct antidiagonal
 labels by a permutation matrix. We prove this for every admissible profile
 whose ith smallest label differs from 2i-1 by at most two. The construction
-works at every order and allows unbounded density slack. Its main extension
-step takes any permutation realizing a multiset L at order n to one
-realizing {3,2n+1} union (L+2) at order n+2. We also prove two one-sided
+works at every order and allows unbounded density slack. For n>=1, our
+extension theorem says that realizability of a multiset L at order n implies
+realizability of Q(L)={3,2n+1} multiset-union (L+2) at order n+2. If all
+source labels lie in [2,2n-2], then h(L)<=h(Q(L)), where h counts permutation
+realizations. Repeated source labels are allowed. We also prove two one-sided
 deviation families and a lower bound for their numbers of realizations.
 The proofs give a restriction on any least counterexample to the full
 conjecture.
@@ -50,15 +52,16 @@ are at least 2^u distinct realizations. By reflection, every admissible
 profile with d_i<=1 for every i is realizable, and has at least 2^u
 realizations when u counts its negative deviations.
 
-**Theorem C (extension).** If L is the label multiset of a permutation
-of [n], then
+**Theorem C (extension existence and counting).** For n>=1, define
 
-    Q(L) = {3,2n+1} multiset-union (L+2)
+    Q(L) = {3,2n+1} multiset-union (L+2).
 
-is the label multiset of a permutation of [n+2]. If all source labels
-lie in [2,2n-2], the construction gives an injection from source
-permutations, each with a choice of an eligible path, into the target
-fiber. In particular h(Q(L))>=h(L), where h counts realizations.
+If L is realizable by a permutation of [n], then Q(L) is realizable by a
+permutation of [n+2]. Separately, for every n-label multiset L whose labels
+lie in [2,2n-2], we have h(L)<=h(Q(L)), where h counts permutation
+realizations. These are the conclusions of `XRay.ordinary_extension` and
+`XRay.extension_count`, respectively. Neither selected statement specifies
+a pointwise extension of a prescribed source permutation.
 
 Theorem A bounds sorted labels relative to the odd staircase 2i-1.
 It does not bound the occupied diagonals to five possible positions.
@@ -157,7 +160,8 @@ at least three vertices.
 
 ## 3. Proof of the extension theorem
 
-Given a permutation p of [n], draw the arcs r to p(r)-3 on the integer
+To prove the existence implication, choose a permutation p of [n] realizing L.
+Draw the arcs r to p(r)-3 on the integer
 vertices [-2,n]. Every vertex has at most one incoming and one outgoing
 arc. The three sources are n-2,n-1,n, and the three sinks are -2,-1,0.
 A coincident source and sink is an isolated path. The source paths end
@@ -185,14 +189,17 @@ boundary coordinates satisfy
 Thus every row and column in [n+2] occurs once. This also covers the
 isolated paths at small orders and proves ordinary realization of Q(L).
 
-For the injection, assume all source labels are in [2,2n-2]. The new
+To prove the conditional counting inequality, assume all source labels are
+in [2,2n-2] and choose an eligible path for each source realization. The new
 labels 3 and 2n+1 are unique. Their cells recover t and s respectively
 from t=column(low)-3 and s=row(high)-2. Delete them. Starting with
 state s, read the remaining cell in column state+3. If its row is a,
 recover source cell (state,a+1), and change state to a-2. Continue to
 t. The other cells (r,c) recover (r-2,c). This recovers both the source
-and the chosen path. Each source has at least one eligible path, proving
-the counting assertion. For a binary interior source the target is binary.
+and the chosen path, so distinct source realizations give distinct targets.
+This proves the selected cardinality inequality. If L has no realization,
+the inequality holds because h(L)=0. For a binary interior source the target
+is binary.
 
 The extension does not prescribe both outer extreme edges. A new label
 3 may occur at (2,2). This distinction is why the extension is usable

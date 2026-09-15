@@ -8,9 +8,10 @@ project:
     and without a bound on density slack. We also prove the one-sided families
     with all deviations at least -1 or all deviations at most 1, with at least
     2^u realizations, where u counts positive or negative deviations respectively.
-    Every supplied permutation of order n, including one with repeated labels,
-    extends from its label multiset L to {3, 2n+1} union (L+2) at order n+2.
-    Interior source fibers inject into their extended fibers. A least-order
+    For n >= 1, if a label multiset L is realizable at order n, then
+    Q(L) = {3, 2n+1} multiset-union (L+2) is realizable at order n+2.
+    If every source label lies in [2, 2n-2], then h(L) <= h(Q(L)), where h
+    counts permutation realizations. Repeated source labels are allowed. A least-order
     counterexample to the unrestricted conjecture must have first deviation at
     least 3 or last deviation at most -3. The unrestricted conjecture remains open.
   authors: [JD Jones]
@@ -136,5 +137,7 @@ fidelity:
     These are restricted realization theorems and an extension principle, not
     a proof of the unrestricted binary X-ray conjecture. Definitions use
     zero-based Fin indices with one-based antidiagonal labels. The extension
-    is compared as a multiset, so its slot order is immaterial. All definitions
+    is compared as a multiset, so its slot order is immaterial. The selected
+    extension statements assert existence and a conditional cardinality inequality,
+    without specifying a pointwise extension of a prescribed permutation. All definitions
     are explicit in Challenge.lean; the comparison has no definition holes.

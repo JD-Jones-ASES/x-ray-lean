@@ -70,11 +70,12 @@ theorem one_sided_lower_count {n : ℕ} (hn : 1 ≤ n) (L : Profile n) (hL : Adm
 theorem one_sided_upper_count {n : ℕ} (hn : 1 ≤ n) (L : Profile n) (hL : Admissible L)
     (hd : ∀ i, deviation L i ≤ 1) : 2 ^ negativeCount L ≤ fiberCount L := by sorry
 
-/-- Q extension for every supplied realization, including repeated labels. -/
+/-- For positive order, realizability of L implies realizability of its Q extension. -/
 theorem ordinary_extension {n : ℕ} (hn : 1 ≤ n) {L : Profile n}
     (h : Realizable L) : Realizable (extend L) := by sorry
 
-/-- The Q extension is injective on each interior source fiber. -/
+/-- For positive order and interior labels, the Q-extension fiber has at least
+as many permutations as the source fiber. -/
 theorem extension_count {n : ℕ} (hn : 1 ≤ n) (L : Profile n)
     (hL : ∀ i, 2 ≤ L i ∧ L i ≤ 2 * (n : ℤ) - 2) :
     fiberCount L ≤ fiberCount (extend L) := by sorry

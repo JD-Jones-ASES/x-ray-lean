@@ -125,8 +125,8 @@ private theorem extend_order_two (p : Equiv.Perm (Fin 2)) :
     Multiset.coe_nil, ← Multiset.singleton_add, add_zero, Function.comp_def]
   ac_rfl
 
-/-- The ordinary Q extension holds for every supplied realization. There is
-no binary, endpoint-anchor, or slack hypothesis. -/
+/-- For positive order, realizability of L implies realizability of its Q extension.
+There is no binary, endpoint-anchor, or slack hypothesis. -/
 theorem ordinary_extension {n : ℕ} (hn : 1 ≤ n) {L : Profile n}
     (h : Realizable L) : Realizable (extend L) := by
   obtain ⟨p, hp⟩ := h.matrix
