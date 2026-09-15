@@ -10,3 +10,5 @@ import XRay.Extension
 import XRay.Reflection
 import XRay.TwoSided
 import XRay.OneSided
+import XRay.ExtensionCount
+import XRay.ReflectionCount

@@ -1,8 +1,9 @@
 # Constructive families and an extension theorem for binary permutation X-rays
 
-Private mathematical draft, 15 September 2026. The arguments below are
-informal proofs assembled from the Lab notes. Formal verification is in progress; see [VERIFICATION.md](VERIFICATION.md)
-for the exact completed scope. The unrestricted binary X-ray conjecture remains open.
+Mathematical note, 15 September 2026. All eight principal statements in
+Challenge.lean have Lean proofs. See [VERIFICATION.md](VERIFICATION.md) for the
+verification scope and the correspondence with this exposition. The unrestricted
+binary X-ray conjecture remains open.
 
 ## Abstract
 

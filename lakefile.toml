@@ -1,6 +1,6 @@
 name = "xRayLean"
 version = "0.1.0"
-defaultTargets = ["XRay"]
+defaultTargets = ["XRay", "Challenge", "Solution", "Test"]
 
 [leanOptions]
 autoImplicit = false

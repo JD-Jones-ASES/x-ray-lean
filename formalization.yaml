@@ -1,0 +1,140 @@
+version: v0.4
+
+project:
+  name: Constructive families and an extension theorem for binary permutation X-rays
+  description: >-
+    We prove permutation realization for every admissible binary X-ray profile
+    whose rank deviations from the odd staircase lie in [-2, 2], at every order
+    and without a bound on density slack. We also prove the one-sided families
+    with all deviations at least -1 or all deviations at most 1, with at least
+    2^u realizations, where u counts positive or negative deviations respectively.
+    Every supplied permutation of order n, including one with repeated labels,
+    extends from its label multiset L to {3, 2n+1} union (L+2) at order n+2.
+    Interior source fibers inject into their extended fibers. A least-order
+    counterexample to the unrestricted conjecture must have first deviation at
+    least 3 or last deviation at most -3. The unrestricted conjecture remains open.
+  authors: [JD Jones]
+  responsible_maintainers: [JD Jones]
+  license: MIT
+
+classification:
+  arxiv: [math.CO]
+  msc2020: [05A05, 05C70]
+
+sources:
+  - title: Constructive families and an extension theorem for binary permutation X-rays
+    authors: [JD Jones]
+    type: original-proof
+    relationship: other
+    location: PROOF.md
+    note: >-
+      This repository presents the results developed in the author's private
+      Analytic-Lab notes. PROOF.md gives the mathematical arguments and the
+      outstanding prior-art comparison. Original-proof records the origin of
+      this development; it is not a claim of worldwide priority.
+  - title: On the X-rays of permutations
+    authors: [C. Bebeacua, T. Mansour, A. Postnikov, S. Severini]
+    type: paper
+    relationship: background
+    location: https://math.mit.edu/~apost/papers/xray.pdf
+    note: The binary X-ray conjecture and its density conditions, Section 4.
+  - title: Perfect Skolem sets
+    authors: [G. Nordh]
+    type: paper
+    relationship: background
+    location: https://gustavnordh.com/perfskolfinal.pdf
+    note: Skolem correspondence, reflection and composition constructions are prior work.
+  - title: A note on X-rays of permutations and a problem of Brualdi and Fritscher
+    authors: [G. Nordh]
+    type: paper
+    relationship: background
+    id: arXiv:1707.03928
+    location: https://arxiv.org/abs/1707.03928
+  - title: Hankel and Toeplitz X-rays of permutations
+    authors: [R. A. Brualdi, E. Fritscher]
+    type: paper
+    relationship: background
+    id: doi:10.1016/j.laa.2014.02.037
+    location: https://doi.org/10.1016/j.laa.2014.02.037
+    note: Only the publisher abstract was retrieved; detailed construction comparison remains outstanding.
+  - title: Binary X-rays of doubly stochastic matrices
+    authors: [Bangzheng Li, Yuewei Liu, Yuan Yao]
+    type: paper
+    relationship: background
+    id: arXiv:2608.01442
+    location: https://arxiv.org/abs/2608.01442
+    note: Fractional realization; permutation realization remains a separate question.
+  - title: Relating tournaments and permutations with xrays
+    authors: [Matthew Davis, Michael W. Schroeder]
+    type: paper
+    relationship: background
+    id: arXiv:2606.21532
+    location: https://arxiv.org/abs/2606.21532
+    note: See PROOF.md for the exact scope of the conditional tournament selection result.
+
+status:
+  scope: >-
+    All eight principal statements in Challenge.lean are proved in Solution.lean.
+    The lower one-sided proof additionally retains its minimum edge. Ranked-cell
+    realizability is proved equivalent to literal permutation-matrix labels.
+    The example deviation words in PROOF.md are informal consequences; no
+    finite census is a premise. The unrestricted conjecture is not proved.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: [propext, Classical.choice, Quot.sound]
+  main_results:
+    - declaration: XRay.two_sided
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+    - declaration: XRay.one_sided_lower
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+    - declaration: XRay.one_sided_upper
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+    - declaration: XRay.one_sided_lower_count
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+    - declaration: XRay.one_sided_upper_count
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+    - declaration: XRay.ordinary_extension
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+    - declaration: XRay.extension_count
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+    - declaration: XRay.least_counterexample
+      file: Solution.lean
+      sorry_count: 0
+      comparator_config: comparator.json
+
+automation:
+  methods:
+    - method: agent
+      models: [OpenAI GPT-6 Astra]
+      framework: OpenAI Codex
+      tool_setup: Mathematical research, Lean proof development, local checks and documentation under JD Jones's direction.
+  notes: See DISCLOSURE.md. No GitHub Actions workflows were used.
+
+review:
+  status: self-assessed
+  notes: >-
+    Local verification is recorded in VERIFICATION.md. No independent human
+    expert review or source-author endorsement is claimed. Mechanical checks
+    do not establish novelty or settle the remaining prior-art comparison.
+
+fidelity:
+  divergences: >-
+    These are restricted realization theorems and an extension principle, not
+    a proof of the unrestricted binary X-ray conjecture. Definitions use
+    zero-based Fin indices with one-based antidiagonal labels. The extension
+    is compared as a multiset, so its slot order is immaterial. All definitions
+    are explicit in Challenge.lean; the comparison has no definition holes.

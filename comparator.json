@@ -11,18 +11,7 @@
     "XRay.extension_count",
     "XRay.least_counterexample"
   ],
-  "definition_names": [
-    "XRay.Profile",
-    "XRay.slack",
-    "XRay.deviation",
-    "XRay.Admissible",
-    "XRay.Realizable",
-    "XRay.labels",
-    "XRay.fiberCount",
-    "XRay.extend",
-    "XRay.positiveCount",
-    "XRay.negativeCount"
-  ],
+  "definition_names": [],
   "permitted_axioms": [
     "propext",
     "Classical.choice",

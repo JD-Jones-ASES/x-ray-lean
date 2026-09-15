@@ -16,7 +16,8 @@ run_cmd do
   unless count ≥ 50 do
     throwError "Axiom audit found only {count} project declarations"
   for name in #[``XRay.ordinary_extension, ``XRay.two_sided, ``XRay.least_counterexample,
-      ``XRay.one_sided_lower, ``XRay.one_sided_upper] do
+      ``XRay.one_sided_lower, ``XRay.one_sided_upper, ``XRay.extension_count,
+      ``XRay.one_sided_lower_count, ``XRay.one_sided_upper_count] do
     unless env.contains name do
       throwError "A completed theorem was not imported: {name}"
   logInfo m!"Audited {count} project declarations; no unexpected axioms."
