@@ -1,0 +1,32 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "XRay.two_sided",
+    "XRay.one_sided_lower",
+    "XRay.one_sided_upper",
+    "XRay.one_sided_lower_count",
+    "XRay.one_sided_upper_count",
+    "XRay.ordinary_extension",
+    "XRay.extension_count",
+    "XRay.least_counterexample"
+  ],
+  "definition_names": [
+    "XRay.Profile",
+    "XRay.slack",
+    "XRay.deviation",
+    "XRay.Admissible",
+    "XRay.Realizable",
+    "XRay.labels",
+    "XRay.fiberCount",
+    "XRay.extend",
+    "XRay.positiveCount",
+    "XRay.negativeCount"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}
