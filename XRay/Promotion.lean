@@ -1,4 +1,5 @@
-import XRay.Basic
+import XRay.IntegerCells
+import XRay.Marked
 
 namespace XRay
 open Finset
@@ -77,5 +78,38 @@ theorem promoted_realizable {m : ℕ} (p : Equiv.Perm (Fin (m + 1))) :
   · simp [promoted, lo, hi, Fin.val_succ]
     ring
   · fin_cases j <;> simp [promoted, lo, hi, Fin.val_succ] <;> ring
+
+/-- Exact label accounting for promotion, retaining one marked occurrence. -/
+theorem promoted_multiset {m : ℕ} (p : Equiv.Perm (Fin (m + 1))) :
+    univ.val.map (promoted p) + {(p 0).val + (1 : ℤ)} =
+      labels p + {(p 0).val + (2 : ℤ)} + {2 * (m + 1 : ℤ)} := by
+  unfold promoted labels
+  rw [map_addCases]
+  simp only [Fin.univ_val_map, List.ofFn_succ, List.ofFn_zero, Fin.val_succ,
+    Fin.val_zero, Nat.cast_zero, zero_add, Nat.cast_add, Nat.cast_one,
+    Matrix.cons_val_zero, Matrix.cons_val_succ, ← Multiset.cons_coe,
+    Multiset.coe_nil, ← Multiset.singleton_add, add_zero]
+  simp only [add_assoc, add_left_comm, add_comm]
+
+/-- Promotion retains the specified low edge at the first board vertex. -/
+theorem promoted_marked {m : ℕ} (p : Equiv.Perm (Fin (m + 1))) :
+    ∃ r c : Equiv.Perm (Fin (m + 2)),
+      (∀ i, promoted p i = (r i).val + (c i).val + (1 : ℤ)) ∧
+      ((r ((0 : Fin 2).natAdd m)).val = 0 ∨
+       (c ((0 : Fin 2).natAdd m)).val = 0) := by
+  obtain ⟨r, c, hrc⟩ := orient_degreeTwo (promotion_degreeTwo p)
+  have hlabels : ∀ i, promoted p i = (r i).val + (c i).val + (1 : ℤ) := by
+    intro i
+    have hlabel : promoted p i = (lo p i).val + (hi p i).val + (1 : ℤ) := by
+      refine Fin.addCases (fun j => ?_) (fun j => ?_) i
+      · simp [promoted, lo, hi, Fin.val_succ]; ring
+      · fin_cases j <;> simp [promoted, lo, hi, Fin.val_succ] <;> ring
+    rcases hrc i with ⟨hr, hc⟩ | ⟨hr, hc⟩
+    · simpa only [hr, hc] using hlabel
+    · rw [hr, hc, hlabel]; ring
+  refine ⟨r, c, hlabels, ?_⟩
+  rcases hrc ((0 : Fin 2).natAdd m) with ⟨hr, _⟩ | ⟨_, hc⟩
+  · exact Or.inl (by simp [hr, lo])
+  · exact Or.inr (by simp [hc, lo])
 
 end XRay

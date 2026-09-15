@@ -8,3 +8,5 @@ import XRay.ShellPath
 import XRay.Promotion
 import XRay.Extension
 import XRay.Reflection
+import XRay.TwoSided
+import XRay.OneSided

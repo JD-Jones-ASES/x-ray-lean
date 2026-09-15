@@ -5,9 +5,9 @@ The main target is every admissible binary profile whose rank deviations
 lie in `[-2, 2]`, at every order and without a bound on density slack.
 The unrestricted conjecture remains open.
 
-**Work in progress.** The ordinary `Q` extension is proved in Lean. The
-main induction, one-sided families, counting bounds and least-counterexample
-corollary are not yet complete. This repository is private and is not ready
+**Work in progress.** The all-order `[-2, 2]` theorem, ordinary `Q` extension
+both one-sided families, and the least-counterexample restriction are proved
+in Lean. The counting bounds are not yet complete. This repository is private and is not ready
 for Palomar submission.
 
 Read [PROOF.md](PROOF.md) for the informal mathematics and

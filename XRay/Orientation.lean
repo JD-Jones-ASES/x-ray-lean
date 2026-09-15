@@ -73,4 +73,11 @@ theorem orient_degreeTwo {n : ℕ} {u v : Fin n → Fin n}
     ((Fintype.bijective_iff_surjective_and_card g).mpr ⟨gs, rfl⟩)
   exact ⟨a, b, choices⟩
 
+theorem DegreeTwo.reindex {n : ℕ} {u v : Fin n → Fin n} (h : DegreeTwo u v)
+    (p : Equiv.Perm (Fin n)) : DegreeTwo (u ∘ p) (v ∘ p) := by
+  intro x
+  change (∑ i, incidence u v (p i) x) = 2
+  rw [Equiv.sum_comp p (fun i => incidence u v i x)]
+  exact h x
+
 end XRay

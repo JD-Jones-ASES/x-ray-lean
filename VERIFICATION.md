@@ -1,12 +1,18 @@
 # Verification
 
-The completed library uses Lean 4.33.0 and Mathlib at
+The library uses Lean 4.33.0 and Mathlib at
 `db584cd6d46c92f209a44c0f1c829460d327499d`. The manifest pins all dependencies.
 Checks run locally; no GitHub Actions minutes have been used.
 
+The current local build passes all four libraries and audits 509 project
+declarations with no unexpected axioms. The source guard passes. These checks
+cover all five completed target theorems.
+
 The formal target remains all eight statements in Challenge.lean. At this
-checkpoint, ordinary extension is complete; the other seven target statements
-are pending. Supporting proofs cover degree-two orientation, equivalence with
+checkpoint, ordinary extension, the all-order two-sided theorem and the
+least-counterexample restriction, and both one-sided existence theorems are
+complete; the three counting statements remain pending. The lower one-sided
+proof retains the minimum edge throughout induction. Supporting proofs cover degree-two orientation, equivalence with
 literal matrix labels, promotion, finite source-to-sink paths, exact switching
 margins and reflection. The library contains no proof placeholders.
 
@@ -27,7 +33,7 @@ private declarations, allowing only `propext`, `Classical.choice` and
 `Quot.sound`. Test/Controls.lean checks loops, parallel edges, a degree
 violation and repeated matrix labels.
 
-The release check must currently fail because seven advertised declarations
+The release check must currently fail because three advertised declarations
 have not been proved. A successful library build therefore does not mean the
 full note has been formalized. Comparator and independent NanoDa replay have
 not yet run. Their configuration selects the full target list, rather than
@@ -44,7 +50,7 @@ labels; multiset equality makes this ordering irrelevant.
 
 ## Packaging reference
 
-The public rk-lean repository was inspected for its Challenge/Solution layout,
+The authorized rk-lean repository was inspected for its Challenge/Solution layout,
 pinned dependencies, axiom auditing and local verification commands. This
 project uses the same Lean/Mathlib versions, with independently written proof
 code and shorter documentation. Neither repository has automatic CI workflows.

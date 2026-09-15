@@ -32,6 +32,47 @@ theorem Realizable.matrix {n : ℕ} {L : Profile n} (h : Realizable L) :
   intro i _
   simpa [Function.comp_def] using (hrc i).symm
 
+/-- The matrix associated to specified row and column assignments. -/
+theorem matrix_of_assignments {n : ℕ} {L : Profile n}
+    (r c : Equiv.Perm (Fin n)) (hrc : ∀ i, L i = (r i).val + (c i).val + (1 : ℤ)) :
+    labels (r.symm.trans c) = univ.val.map L := by
+  unfold labels
+  conv_lhs => rw [← Multiset.map_univ_val_equiv r, Multiset.map_map]
+  apply Multiset.map_congr rfl
+  intro i _
+  simpa [Function.comp_def] using (hrc i).symm
+
+/-- A realization with a zero endpoint at its first-ranked cell can be
+transposed to put that cell in the first row. -/
+theorem first_row_of_zero_endpoint {m : ℕ} {K : Profile (m + 1)}
+    (r c : Equiv.Perm (Fin (m + 1)))
+    (hrc : ∀ i, K i = (r i).val + (c i).val + (1 : ℤ))
+    (hz : r 0 = 0 ∨ c 0 = 0) :
+    ∃ p : Equiv.Perm (Fin (m + 1)), labels p = univ.val.map K ∧
+      (p 0).val + (1 : ℤ) = K 0 := by
+  have aux (a b : Equiv.Perm (Fin (m + 1)))
+      (hab : ∀ i, K i = (a i).val + (b i).val + (1 : ℤ)) (ha : a 0 = 0) :
+      ∃ p : Equiv.Perm (Fin (m + 1)), labels p = univ.val.map K ∧
+        (p 0).val + (1 : ℤ) = K 0 := by
+    refine ⟨a.symm.trans b, matrix_of_assignments a b hab, ?_⟩
+    have hai : a.symm 0 = 0 := a.symm_apply_eq.mpr ha.symm
+    simpa only [Equiv.trans_apply, hai, ha, Fin.val_zero, Nat.cast_zero, zero_add]
+      using (hab 0).symm
+  rcases hz with hz | hz
+  · exact aux r c hrc hz
+  · exact aux c r (fun i => by rw [hrc i]; ring) hz
+
+ theorem first_row_of_small_label {m : ℕ} {K : Profile (m + 1)}
+    (h : Realizable K) (hk : K 0 ≤ 2) :
+    ∃ p : Equiv.Perm (Fin (m + 1)), labels p = univ.val.map K ∧
+      (p 0).val + (1 : ℤ) = K 0 := by
+  obtain ⟨r, c, hrc⟩ := h
+  apply first_row_of_zero_endpoint r c hrc
+  have hh := hrc 0
+  by_cases hr : (r 0).val = 0
+  · exact Or.inl (Fin.ext hr)
+  · exact Or.inr (Fin.ext (show (c 0).val = 0 by omega))
+
 /-- Reindex two finite functions with the same multiset of values. -/
 theorem equiv_of_map_univ_eq {n : ℕ} {f g : Fin n → ℤ}
     (h : univ.val.map f = univ.val.map g) :
